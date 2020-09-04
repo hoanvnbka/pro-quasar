@@ -11,6 +11,14 @@
           </q-avatar>
           Title
         </q-toolbar-title>
+
+        <q-btn
+          class="q-mr-xs"
+          flat
+          round
+          :icon="$q.dark.isActive ? 'fas fa-moon' : 'wb_sunny'"
+          @click="$q.dark.toggle()"
+        />
       </q-toolbar>
     </q-header>
 
@@ -38,13 +46,13 @@
           </q-item-section>
         </q-item>
 
-        <q-item active clickable v-ripple>
+        <q-item to="/posts" clickable v-ripple>
           <q-item-section avatar>
-            <q-icon name="star" />
+            <q-icon name="far fa-clone" />
           </q-item-section>
 
           <q-item-section>
-            Star
+            Posts
           </q-item-section>
         </q-item>
 

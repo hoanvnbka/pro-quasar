@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md">
     <q-table
-      title="Treats"
+      title="Users"
       :data="users"
       :columns="columns"
       row-key="name"
@@ -10,13 +10,22 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+import showNotify from 'src/utils/notification'
 
 export default {
   name: 'Users',
   data () {
     return {
       columns: [
+        {
+          name: 'id',
+          required: true,
+          label: 'Id',
+          align: 'center',
+          field: 'id',
+          sortable: true
+        },
         {
           name: 'name',
           required: true,
@@ -26,14 +35,30 @@ export default {
           sortable: true
         },
         {
-          name: 'user_name',
+          name: 'username',
           required: true,
           label: 'User Name',
           align: 'left',
-          field: 'user_name',
+          field: 'username',
           sortable: true
         },
-        { name: 'email', required: true, align: 'left', label: 'Email', field: 'email', sortable: true }
+        { name: 'email', required: true, align: 'left', label: 'Email', field: 'email', sortable: true },
+        {
+          name: 'phone',
+          required: true,
+          label: 'Phone',
+          align: 'left',
+          field: 'phone',
+          sortable: true
+        },
+        {
+          name: 'website',
+          required: true,
+          label: 'Website',
+          align: 'left',
+          field: 'website',
+          sortable: true
+        }
       ]
     }
   },
@@ -41,6 +66,18 @@ export default {
     ...mapGetters({
       users: 'user/allUsers'
     })
+  },
+  methods: {
+    ...mapActions({
+      getAllUsers: 'user/getAllUsers'
+    })
+  },
+  async mounted () {
+    try {
+      await this.getAllUsers()
+    } catch (e) {
+      showNotify('negative', 'Something went wrong')
+    }
   }
 }
 </script>
