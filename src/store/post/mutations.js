@@ -2,7 +2,7 @@ export function createPost (state, post) {
   state.posts.unshift(post)
 }
 
-export function selectPosts (state, posts) {
+export function setPosts (state, posts) {
   state.posts = posts
 }
 

@@ -10,7 +10,7 @@ export async function createPost (context, newPost) {
 export async function getAllPosts (context) {
   const posts = await axiosInstance.get('/posts')
   if (posts) {
-    context.commit('selectPosts', posts.data)
+    context.commit('setPosts', posts.data)
   }
 }
 

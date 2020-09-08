@@ -16,7 +16,7 @@
           class="q-mr-xs"
           flat
           round
-          :icon="$q.dark.isActive ? 'fas fa-moon' : 'wb_sunny'"
+          :icon="$q.dark.isActive ? 'wb_sunny' : 'fas fa-moon'"
           @click="$q.dark.toggle()"
         />
       </q-toolbar>
@@ -56,25 +56,13 @@
           </q-item-section>
         </q-item>
 
-        <q-item clickable v-ripple>
+        <q-item to="/todos" clickable v-ripple>
           <q-item-section avatar>
-            <q-icon name="send" />
+            <q-icon name="fas fa-tasks" />
           </q-item-section>
 
           <q-item-section>
-            Send
-          </q-item-section>
-        </q-item>
-
-        <q-separator />
-
-        <q-item clickable v-ripple>
-          <q-item-section avatar>
-            <q-icon name="drafts" />
-          </q-item-section>
-
-          <q-item-section>
-            Drafts
+            Tasks
           </q-item-section>
         </q-item>
       </q-list>
